@@ -1,5 +1,4 @@
 import cn from "classnames";
-import sprite from "assets/sprite.svg";
 
 export interface IconProps {
   name: string;
@@ -9,7 +8,7 @@ export interface IconProps {
 export const Icon = ({ name, className }: IconProps) => {
   return (
     <svg className={cn(className)}>
-      <use href={`${sprite}#${name}`} />
+      <use href={`${"assets/sprite.svg"}#${name}`} />
     </svg>
   );
 };

@@ -2,9 +2,6 @@ import cn from "classnames";
 import { Container } from "components/ui/Container";
 import { CustomButton } from "components/ui/CustomButton";
 
-import sneakers from "assets/hero/sneakers.png";
-import ultimate from "assets/hero/ultimate.png";
-
 interface HeroProps {
   className?: string;
 }
@@ -17,7 +14,7 @@ export const Hero = ({ className }: HeroProps) => {
         style={{ background: "var(--gradient-grey-white)" }}
       >
         <img
-          src={ultimate}
+          src={"assets/hero/ultimate.png"}
           alt="ULTIMATE"
           className="absolute left-0 bottom-3 max-w-[140px] w-[140px] z-3 max-xl:w-[100px] max-lg:w-[70px] max-xs:w-[50px]"
         />
@@ -38,7 +35,7 @@ export const Hero = ({ className }: HeroProps) => {
           </div>
 
           <div className="w-[60%] max-md:order-1 max-md:w-[90%]">
-            <img src={sneakers} alt="Sneakers" />
+            <img src={"assets/hero/sneakers.png"} alt="Sneakers" />
 
             <p className="text-center text-[38px] font-medium max-xs:text-[24px]">Trendy Slick Pro</p>
             <p className="text-center text-[32px] text-[var(--color-primary-opacity)] max-xs:text-[18px]">₹ 3999.00</p>

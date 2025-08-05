@@ -3,7 +3,6 @@ import cn from "classnames";
 import { Container } from "./ui/Container";
 import { Link } from "react-router";
 
-import logo from "assets/logo.png";
 import { ShoppingCart, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -73,7 +72,7 @@ export const Header = ({ className }: HeaderProps) => {
       <Container>
         <div className="flex justify-between items-center">
           <Link to="/">
-            <img className="w-[94px] h-[32px]" src={logo} alt="Slick" />
+            <img className="w-[94px] h-[32px]" src="assets/logo.png" alt="Slick" />
           </Link>
 
           <nav
