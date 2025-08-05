@@ -4,8 +4,8 @@ import { Container } from "./ui/Container";
 import { Link } from "react-router";
 
 import logo from "assets/logo.png";
-import { Search, ShoppingCart, X } from "lucide-react";
-import { useState } from "react";
+import { ShoppingCart, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   className?: string;
@@ -20,21 +20,9 @@ const NAVIGATION_ITEMS = [
     name: "Shop",
     href: "/shop",
   },
-  {
-    name: "Collection",
-    href: "/collection",
-  },
-  {
-    name: "Customize",
-    href: "/customize",
-  },
 ];
 
 const LINKS_ITEMS = [
-  {
-    icon: <Search size={28} />,
-    href: "/search",
-  },
   {
     icon: <ShoppingCart size={28} />,
     href: "/cart",
@@ -42,7 +30,22 @@ const LINKS_ITEMS = [
 ];
 
 export const Header = ({ className }: HeaderProps) => {
-  const [menuIsActive, setMenuIsActive] = useState<boolean>(true);
+  const [menuIsActive, setMenuIsActive] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 70) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   function handleChangeMenuStatus() {
     if (!menuIsActive) {
@@ -54,15 +57,28 @@ export const Header = ({ className }: HeaderProps) => {
     setMenuIsActive((prevState) => !prevState);
   }
 
+  function handleCloseMenu() {
+    setMenuIsActive(false);
+    document.body.style.overflow = "auto";
+  }
+
   return (
-    <header className={cn(className, "fixed top-0 left-0 right-0 pt-[73px] max-md:pt-[30px] z-50")}>
+    <header
+      className={cn(
+        className,
+        "fixed top-0 left-0 right-0 pt-[50px] max-md:pt-[30px] z-50 pb-[50px]",
+        scrolled && "bg-white"
+      )}
+    >
       <Container>
         <div className="flex justify-between items-center">
-          <img className="w-[94px] h-[32px]" src={logo} alt="Slick" />
+          <Link to="/">
+            <img className="w-[94px] h-[32px]" src={logo} alt="Slick" />
+          </Link>
 
           <nav
             className={cn(
-              "max-md:absolute max-md:top-[0px] max-md:right-[-100%] max-md:pt-25 max-md:w-[300px] max-md:h-[100vh] max-md:bg-[var(--color-primary-opacity)] backdrop-blur-[10px] max-md:p-5 transition-all z-100",
+              "max-md:absolute max-md:top-[0px] max-md:right-[-100%] max-md:pt-25 max-md:w-[300px] max-md:h-[100vh] max-md:bg-[var(--color-primary-opacity)] max-md:backdrop-blur-[10px] max-md:p-5 transition-all z-100",
               menuIsActive && "max-md:right-[0%]"
             )}
           >
@@ -75,7 +91,11 @@ export const Header = ({ className }: HeaderProps) => {
             <ul className="flex items-center gap-[55px] max-md:flex-col max-md:items-start max-md:gap-6">
               {NAVIGATION_ITEMS.map((item) => (
                 <li key={item.href}>
-                  <Link className="text-[24px] max-lg:text-[18px] max-md:text-[var(--color-secondary)]" to={item.href}>
+                  <Link
+                    className="text-[24px] max-lg:text-[18px] max-md:text-[var(--color-secondary)]"
+                    to={item.href}
+                    onClick={handleCloseMenu}
+                  >
                     {item.name}
                   </Link>
                 </li>

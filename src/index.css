@@ -2,17 +2,76 @@
 
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-2xs: 26.5625rem; /* 425px */
+  --breakpoint-xs: 32.5rem; /* 520px */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-xmd: 55.3125rem; /* 885px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+}
+
 :root {
+  /* Fonts */
   --font-poppis: "Poppins", sans-serif;
   --font-inter: "Inter", sans-serif;
   --font-alata: "Alata", sans-serif;
 
+  /* Primary Colors */
   --color-primary: #000;
   --color-secondary: #fff;
-
   --color-primary-opacity: #00000079;
+  --color-primary-opacity-75: rgba(0, 0, 0, 0.75);
+
+  /* Gray Scale for UI Elements */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+
+  /* Text Colors */
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-muted: var(--color-gray-500);
+  --color-text-light: var(--color-gray-400);
+
+  /* Border Colors */
+  --color-border-light: var(--color-gray-200);
+  --color-border-medium: var(--color-gray-300);
+  --color-border-dark: var(--color-gray-400);
+
+  /* Background Colors */
+  --color-bg-primary: var(--color-secondary);
+  --color-bg-secondary: var(--color-gray-50);
+  --color-bg-muted: var(--color-gray-100);
+
+  /* Hover States */
+  --color-hover-gray: var(--color-gray-100);
+  --color-hover-border: var(--color-gray-400);
+  --color-hover-text: var(--color-gray-900);
+
+  /* Existing gradient */
+  --gradient-grey-white: linear-gradient(90deg, #e4e4e4 0%, #fafafa 100%);
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   font-family: var(--font-poppis);
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
