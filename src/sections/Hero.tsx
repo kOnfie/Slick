@@ -2,8 +2,8 @@ import cn from "classnames";
 import { Container } from "components/ui/Container";
 import { CustomButton } from "components/ui/CustomButton";
 
-import sneakers from "assets/hero/sneakers.png";
-import ultimate from "assets/hero/ultimate.png";
+import sneakers from "/public/assets/hero/sneakers.png";
+import ultimate from "/public/assets/hero/ultimate.png";
 
 interface HeroProps {
   className?: string;

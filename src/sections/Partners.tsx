@@ -7,9 +7,9 @@ interface PartnersProps {
 }
 
 const logos = [
-  <img src="src/assets/partners/ebay.svg" alt="ebay" />,
-  <img src="src/assets/partners/amazon.svg" alt="amazon" />,
-  <img src="src/assets/partners/ajio.svg" alt="ajio" />,
+  <img src="/public/assets/partners/ebay.svg" alt="ebay" />,
+  <img src="/public/assets/partners/amazon.svg" alt="amazon" />,
+  <img src="/public/assets/partners/ajio.svg" alt="ajio" />,
 ];
 
 export const Partners = ({ className }: PartnersProps) => {
