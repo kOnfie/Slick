@@ -3,7 +3,7 @@ import cn from "classnames";
 import { Container } from "./ui/Container";
 import { Link } from "react-router";
 
-import logo from "/public/assets/logo.png";
+import logo from "assets/logo.png";
 import { ShoppingCart, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
